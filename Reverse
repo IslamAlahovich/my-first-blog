@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+char str2[30];
+int dlina;
+char *rev(char *string)
+{
+    int length = strlen(string);
+    char temp;
+    for (int counter = 0; counter < (length / 2); counter++)
+    {
+        if (counter != (length - 1 - counter))
+        {
+        temp = string[length - 1 - counter];
+        string[length - 1 - counter] = string[counter];
+        string[counter] = temp;
+        }
+    }
+
+ return string;
+}
+
+void funkciya(char *stroka){
+
+    char str1[30];
+    strncpy(str1,stroka,5);
+    strcat(::str2,rev(str1));
+
+    for(int i=0; i<=::dlina; i++)
+    {
+        if(i<=(::dlina-5)){
+                stroka[i]=stroka[i+5];
+            }else{stroka[i]='\0';}
+    }
+    if(strlen(stroka)>=5){
+
+            funkciya(stroka);
+    }else{strcat(::str2,rev(stroka));}
+
+
+}
+
+int main(){
+    char stroka[30];
+    gets(stroka);
+    ::dlina=strlen(stroka);
+    funkciya(stroka);
+    cout << ::str2;
+    return 0;
+}
