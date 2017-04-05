@@ -1,27 +1,26 @@
 #include <iostream>
-#include <string.h>
+#include <string>
 using namespace std;
 int main() {
-  char buff[50]="1232435sdfg/*asdf23424f*/as234234sdfg5";
-  for(int i=0;i<strlen(buff);i++){
-      if(buff[i]=="/" and buff[i+1]=="*"){
-          int k=i,m=0;
-          char c[2];
-          while(c[0]!="*" and c[1]!="/"){
-              c[0]=buff[k];
-              c[1]=buff[k+1];
-              m++;
-              k++;
+  string buff="123/*12345*/abc/*asdfaksjdf23*/asfg";
+    for(int i=0;i<buff.size();i++){
+        
+        if(buff[i]=='/' and buff[i+1]=='*'){
+            int k=i+1,m=0,n=1;
+            char c[]="01";
+            
+            for(k;k<buff.size();k++){
+                c[0]=buff[k];
+                c[1]=buff[k+1];
+                if(c[0]=='*' and c[1]=='/'){
+                    k=buff.size();
+                  }
+                m++;
+                
             }
-          for(i; i<strlen(buff);i++){
-              buff[i]=buff[i+m];
-            }
-          while(m!=0){
-              buff[strlen(buff)-1-m]="\0";
-              m-=1;
-            }
+            buff.erase(i,m+2);
         }
     }
-    cout << buff << endl;
-  return 0;
+cout << buff;
+return 0;
 }
