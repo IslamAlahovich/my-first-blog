@@ -1,380 +1,42 @@
 #include <iostream>
-using namespace std;
-int main() {
-      int day=31, month=1, year=2015, x=52;
-      while(x!=0){
-          if((year%4==0 and year%100!=0)or(year%400==0)){
-                  if(month>2){
-                        if(x>=365){
-                          year+=1;
-                          x-=365;
-                          continue;
-                        }
-                    }else{
-                        if(x>=366){
-                            year+=1;
-                            x-=366;
-                            continue;
-                          }
-                      }
-            }
-          else if((year+1%4==0 and year+1%100!=0)or(year+1%400==0)){
-                  if(month<2){
-                      if(x>=365){
-                          year+=1;
-                          x-=365;
-                          continue;
-                        }
-                    }
-                    else{
-                        if(x>=366){
-                            year+=1;
-                            x-=366;
-                            continue;
-                          }
-                      }
-              }
-          else{
-                  if(x>=365){
-                      year+=1;
-                      x-=365;
-                      continue;
-                    }
-                }
-          switch(month){
-              case 1:{
-                switch(day){
-                    case 29:{
-                        if((year%4==0 and year%100!=0)or(year%400==0)){
-                            if(x>=31){
-                                month+=1;
-                                x-=31;
-                                day=29;
-                                continue;
-                              }
-                          }
-                        else{
-                            if(x>=30){
-                                month+=1;
-                                x-=30;
-                                day=28;
-                                continue;
-                              }
-                          }
-                      }
-                    case 30:{
-                      if((year%4==0 and year%100!=0)or(year%400==0)){
-                            if(x>=30){
-                                month+=1;
-                                x-=30;
-                                day=29;
-                                continue;
-                              }
-                          }
-                        else{
-                            if(x>=29){
-                                month+=1;
-                                x-=29;
-                                day=28;
-                                continue;
-                              }
-                          }
-                        
-                      }
-                    case 31:{
-                        if((year%4==0 and year%100!=0)or(year%400==0)){
-                            if(x>=29){
-                                month+=1;
-                                x-=29;
-                                day=29;
-                                continue;
-                              }
-                          }
-                        else{
-                            if(x>=28){
-                                month+=1;
-                                x-=28;
-                                day=28;
-                                continue;
-                              }
-                          }
-                      }
-                    default:{
-                          if(x>=31){
-                            month+=1;
-                            x-=31;
-                            continue;
-                          }
-                      }
-                  } 
-              }
-              case 2:{
-                if((year%4==0 and year%100!=0)or(year%400==0)){
-                    if(x>=29){
-                        month+=1;
-                        x-=29;
-                        continue;
-                      }
-                  }
-                else{
-                    if(x>=28){
-                      month+=1;
-                      x-=28;
-                      continue;
-                    }
-                  }
-              }
-              case 3:{
-                if(x>=31){
-                    month+=1;
-                    x-=31;
-                    continue;
-                  }
-              }
-              case 4:{
-                if(x>=30){
-                    month+=1;
-                    x-=30;
-                    continue;
-                  }
-              }
-              case 5:{
-                if(x>=31){
-                    month+=1;
-                    x-=31;
-                    continue;
-                  }
-              }
-              case 6:{
-                if(x>=30){
-                    month+=1;
-                    x-=30;
-                    continue;
-                  }
-              }
-              case 7:{
-                if(x>=31){
-                    month+=1;
-                    x-=31;
-                    continue;
-                  }
-              }
-              case 8:{
-                if(x>=31){
-                    month+=1;
-                    x-=31;
-                    continue;
-                  }
-              }
-              case 9:{
-                if(x>=30){
-                    month+=1;
-                    x-=30;
-                    continue;
-                  }
-              }
-              case 10:{
-                if(x>=31){
-                    month+=1;
-                    x-=31;
-                    continue;
-                  }
-              }
-              case 11:{
-                if(x>=30){
-                    month+=1;
-                    x-=30;
-                    continue;
-                  }
-              }
-              case 12:{
-                  if(x>=31){
-                      month=1;
-                      year+=1;
-                      x-=31;
-                      continue;
-                    }
-                }
-            }
-          switch(month){
-              case 1:{
-                if((day+x)>=31){
-                    month+=1;
-                    day=(day+x)-31;
-                    x=0;
-                    continue;
-                  }
-                else{
-                  day=day+x;
-                  x=0;
-                  continue;
-                }
-              }
-              case 2:{
-                if((year%4==0 and year%100!=0)or(year%400==0)){
-                    if((day+x)>=29){
-                        month+=1;
-                        day=(day+x)-29;
-                        x=0;
-                        continue;
-                     }
-                    else{
-                        day=day+x;
-                        x=0;
-                        continue;
-                      }
-                  }
-                else{
-                    if((day+x)>=28){
-                      month+=1;
-                      day=(day+x)-28;
-                      x=0;
-                      continue;
-                    }
-                    else{
-                      day=day+x;
-                      x=0;
-                      continue;
-                    }
-                  }
-              }
-              case 3:{
-                if((day+x)>=31){
-                    month+=1;
-                    day=(day+x)-31;
-                    x=0;
-                    continue;
-                  }
-                else{
-                  day=day+x;
-                  x=0;
-                  continue;
-                }
-              }
-              case 4:{
-                if((day+x)>=30){
-                    month+=1;
-                    day=(day+x)-30;
-                    x=0;
-                    continue;
-                  }
-                else{
-                  day=day+x;
-                  x=0;
-                  continue;
-                }  
-              }
-              case 5:{
-                if((day+x)>=31){
-                    month+=1;
-                    day=(day+x)-31;
-                    x=0;
-                    continue;
-                  }
-                else{
-                  day=day+x;
-                  x=0;
-                  continue;
-                }
-              }
-              case 6:{
-                if((day+x)>=30){
-                    month+=1;
-                    day=(day+x)-30;
-                    x=0;
-                    continue;
-                  }
-                else{
-                  day=day+x;
-                  x=0;
-                  continue;
-                }
-              }
-              case 7:{
-                if((day+x)>=31){
-                    month+=1;
-                    day=(day+x)-31;
-                    x=0;
-                    continue;
-                  }
-                else{
-                  day=day+x;
-                  x=0;
-                  continue;
-                }
-              }
-              case 8:{
-                if((day+x)>=31){
-                    month+=1;
-                    day=(day+x)-31;
-                    x=0;
-                    continue;
-                  }
-                else{
-                  day=day+x;
-                  x=0;
-                  continue;
-                }
-              }
-              case 9:{
-                if((day+x)>=30){
-                    month+=1;
-                    day=(day+x)-30;
-                    x=0;
-                    continue;
-                  }
-                else{
-                  day=day+x;
-                  x=0;
-                  continue;
-                }
-              }
-              case 10:{
-                if((day+x)>=31){
-                    month+=1;
-                    day=(day+x)-31;
-                    x=0;
-                    continue;
-                  }
-                else{
-                  day=day+x;
-                  x=0;
-                  continue;
-                }
-              }
-              case 11:{
-                if((day+x)>=30){
-                    month+=1;
-                    day=(day+x)-30;
-                    x=0;
-                    continue;
-                  }
-                else{
-                  day=day+x;
-                  x=0;
-                  continue;
-                }
-              }
-              case 12:{
-                  if((day+x)>=31){
-                      month=1;
-                      year+=1;
-                      day=(day+x)-31;
-                      x=0;
-                      continue;
-                    }
-                  else{
-                    day=day+x;
-                    x=0;
-                    continue;
-                  }
-                }
-            }
-            
-        }
-      cout << day << ":" << month << ":" << year;  
-        
 
-    
+using namespace std;
+
+int daynumber (int m, int y) {
+  switch (m) {
+    case 1: return 31; break;
+    case 2:
+      if ((y%4==0) and ((y%100!=0) or (y%400==0))) return 29;
+      else return 28;
+      break;
+    case 3: return 31; break;
+    case 4: return 30; break;
+    case 5: return 31; break;
+    case 6: return 30; break;
+    case 7: return 31; break;
+    case 8: return 31; break;
+    case 9: return 30; break;
+    case 10: return 31; break;
+    case 11: return 30; break;
+    case 12: return 31; break;
+  }
+}
+
+int main() {
+  int d=1,m=2,y=1600, i, n=365;
+
+
+  for(i=1;i<=n;i++) {
+    d++;
+    if(d>daynumber(m,y)) {
+      d=1;
+      m++;
+    }
+    if(m>12) {
+      m=1;
+      y++;
+    }
+  }
+  cout << d << " : " << m << " : " << y << endl;
   return 0;
 }
