@@ -1,26 +1,48 @@
 #include <iostream>
 #include <string>
-using namespace std;
+#include <fstream>
+using namespace std; //adfasdfkj/*asdf*/aaf
+
 int main() {
-  string buff="123/*12345*/abc/*asdfaksjdf23*/asfg";
-    for(int i=0;i<buff.size();i++){
-        
-        if(buff[i]=='/' and buff[i+1]=='*'){
-            int k=i+1,m=0,n=1;
-            char c[]="01";
-            
-            for(k;k<buff.size();k++){
-                c[0]=buff[k];
-                c[1]=buff[k+1];
-                if(c[0]=='*' and c[1]=='/'){
-                    k=buff.size();
-                  }
-                m++;
-                
+    ifstream fin("in.txt");
+    ofstream fout("out.txt");
+    bool check=true;
+    char buff1, buff2=(char)fin.get();
+
+    int skobki=0;
+    int slash=0;
+
+    if(!fin.is_open()) cout << "Not found" << endl;
+
+    else{
+            while(!fin.eof()){
+                    buff1=buff2;
+                    buff2=(char)fin.get();
+
+                    if (buff1=='"') skobki+=1;
+
+                    if(buff1=='/' && buff2=='*' && skobki%2==0){
+                        while(check){
+                                buff1=buff2;
+                                buff2=(char)fin.get();
+
+                                if(buff1=='*' and buff2=='/') check=false;
+                            }
+
+                        buff2=(char)fin.get();
+                        check=true;
+
+                        continue;
+
+                    }
+                    fout << buff1;
+
             }
-            buff.erase(i,m+2);
+
+            fin.close();
         }
-    }
-cout << buff;
-return 0;
+
+
+
+    return 0;
 }
