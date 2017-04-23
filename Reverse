@@ -1,49 +1,29 @@
 #include <iostream>
 #include <cstring>
-
+#include <math.h>
 using namespace std;
+int i=0;
+void f(char x[],int n){
+      char tmp;
+      tmp=x[i];
+      x[i]=x[i+n];
+      x[i+n]=tmp;
+      i+=1;
+      if (n-2>=1) f(x,n-2);
+  }
 
-char dst[100];
-char str2[30];
-int dlina;
+void control(char s[], int m){
+      if (m>5){ 
+        f(s,4);
+        i+=3;
+        control(s,m-=5);
+      }else f(s,m-1);
+  }
 
-char *rev(char *src){
-  memset(dst,0,100);
-  for(int i=strlen(src)-1, a=0; i>=0; i--, a++) 
-    dst[a] = src[i];
-
-	return dst;
-}
-
-void funkciya(char *stroka){
-
-    char str1[30];
-    memset(str1,0,30);
-    
-    strncpy(str1,stroka,5);
-    strcat(str2,rev(str1));
-
-    for(int i=0; i<=dlina; i++)
-    {
-        if(i<=(dlina-5)){
-                stroka[i]=stroka[i+5];
-        }else{stroka[i]='\0';}
-    }
-    
-    if(strlen(stroka)>=5) funkciya(stroka);
-    else strcat(str2,rev(stroka));
-
-
-}
-
-int main(){
-    char stroka[30]="1234512345";
-    memset(str2,0,30);
-    dlina=strlen(stroka);
-    
-    funkciya(stroka);
-    
-    cout << str2;
-    
-    return 0;
+int main() {
+  char str[]="1234512345123";
+  int value=strlen(str);
+  control(str, value);
+  cout << str;
+  return 0;
 }
