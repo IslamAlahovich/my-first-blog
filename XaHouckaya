@@ -7,7 +7,7 @@ void funkciya(int diski, int start, int finish, int midle)
         if (diski!=0)
         {
                 funkciya(diski-1, start, midle, finish);
-                ::count+=1;
+                cout << start << " -> " << midle << endl;
                 funkciya(diski-1, midle, finish, start);
         }
 
