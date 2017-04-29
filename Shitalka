@@ -1,40 +1,39 @@
 #include <stdio.h> 
 
-struct Node1 
-{ 
-int elem; 
-Node1 *next; 
-}; 
+struct Node1 { 
+  int elem; 
+  Node1 *next; 
+};
 
-void main() 
-{ 
-int n, m, i; 
-Node1 *q, *first, *p; 
-first = new Node1; 
-q = first; 
+int main() { 
+  int n, m, i; 
+  
+  Node1 *q, *first, *p; 
+  
+  first = new Node1; 
+  q = first; 
 
-scanf_s("%d%d", &n, &m); 
+  n=3,m=5;
 
-for (i = 1; i < n; i++) 
-{ 
-q->elem = i; 
-q->next = new Node1; 
-q = q->next; 
-} 
+  for (i = 1; i < n; i++) { 
+    q->elem = i; 
+    q->next = new Node1; 
+    q = q->next; 
+  } 
 
-q->elem = n; 
-q->next = first; 
+  q->elem = n; 
+  q->next = first; 
 
-while (q->next != q) 
-{ 
-for (i = 1; i <= m-1; i++) 
-{ 
-q = q->next; 
-} 
-p = q->next->next; 
-delete q->next; 
-q->next = p; 
-} 
+  while (q->next != q) { 
+    for (i = 1; i <= m-1; i++) { 
+      q = q->next; 
+    } 
+    p = q->next->next; 
+    delete q->next; 
+    q->next = p; 
+  } 
 
-printf("%d\n", q->elem); 
+  printf("%d\n", q->elem); 
+  
+  return 0;
 }
