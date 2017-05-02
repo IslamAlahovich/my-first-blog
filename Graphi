@@ -1,0 +1,54 @@
+#include <stdio.h> 
+#include <math.h> 
+
+
+int ymnoj(int n, int i, int j,int x[][100] ) { 
+  int u,s;  
+  s=x[i][j]; 
+  for (u=0;u<n;u++){ 
+    if (x[i][u]+ x[u][j]<s) 
+      s= x[i][u]+ x[u][j]; 
+  } 
+  return s; 
+} 
+
+int main() { 
+  int f,n,i,j,x,y,z; 
+  scanf ("%i", &n); 
+  int m [100][100]; 
+
+  for (i=0;i<n;i++){ 
+    for (j=0;j<n;j++){ 
+      if (i==j){ 
+        m[i][j]=0; 
+      } else m[i][j]=32000; 
+    } 
+  } 
+
+  do {scanf ("%i%i%i", &x, &y, &z); 
+    m[x][y]=z; 
+  } while ((x!=0)||(y!=0)||(z!=0)); 
+
+
+  int h[100][100]; 
+
+  for (f=1;f<n-1;f++){ 
+    for (i=0;i<n;i++){ 
+      for (j=0;j<n;j++){ 
+        h[i][j]=ymnoj(n,i,j,m);
+      }
+    } 
+    for (i=0;i<n;i++){ 
+      for (j=0;j<n;j++){
+        m[i][j]=h[i][j];
+      }
+    }
+  } 
+
+  for (i=0;i<n;i++){ 
+    printf ("\n"); 
+    for (j=0;j<n;j++){printf ("%i ", h[i][j]);}
+  } 
+  
+  return 0; 
+}
