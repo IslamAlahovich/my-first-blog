@@ -6,20 +6,20 @@ void funkciya(int diski, int start, int finish, int midle)
 {                                                        
         if (diski!=0)
         {
-                funkciya(diski-1, start, midle, finish);
-                cout << start << " -> " << midle << endl;
-                funkciya(diski-1, midle, finish, start);
+                funkciya(diski-1, start, sred, finish);
+                cout << start << " -> " << sred << endl;
+                funkciya(diski-1, sred, finish, start);
         }
 
 }
 
 int main()
 {
-        int start=1, finish=3, midle=2, diski;
+        int start=1, finish=3, sred=2, diski;
         cout << "Vvedite diski:" << endl;
         cin  >> diski;
-        funkciya(diski, start, finish, midle);
+        funkciya(diski, start, finish, sred);
 
-        cout << ::count;
+        cout << count;
         return 0;
 }
