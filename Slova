@@ -1,15 +1,22 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <set>
+
+using namespace std;
  
 void Generate(const std::string &s, const size_t N, const size_t k = 0)
 {
     static std::vector<int> X(N);
     if (k == N)
     {
-        for (const auto x : X)
-            std::cout << s[x];
-        std::cout << std::endl;
+        std::set<int> ss(X.begin(), X.end());
+        if (ss.size() == N)
+        {
+            for (size_t i = 0; i < N; i++)
+                std::cout << s[X[i]];
+            std::cout << std::endl;
+        }
     }
     else
     {
@@ -23,5 +30,5 @@ void Generate(const std::string &s, const size_t N, const size_t k = 0)
  
 int main()
 {
-    Generate("abcd", 3);
+    Generate("abc", 3);
 }
