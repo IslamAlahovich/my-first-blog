@@ -2,7 +2,8 @@
 #include <string>
 #include <vector>
 #include <set>
-
+char xep[20];
+int xyu=0;
 using namespace std;
  
 void Generate(const string &s, const size_t N, const size_t k = 0)
@@ -13,8 +14,11 @@ void Generate(const string &s, const size_t N, const size_t k = 0)
         set<int> ss(X.begin(), X.end());
         if (ss.size() == N)
         {
-            for (size_t i = 0; i < N; i++)
+            for (size_t i = 0; i < N; i++){
+                xep[xyu]=s[X[i]];
                 cout << s[X[i]];
+                xyu++;
+            }
             cout << endl;
         }
     }
@@ -30,5 +34,7 @@ void Generate(const string &s, const size_t N, const size_t k = 0)
  
 int main()
 {
-    Generate("abc", 3);
+    
+    Generate("ab", 2);
+    
 }
