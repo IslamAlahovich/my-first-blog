@@ -1,25 +1,23 @@
 #include <iostream>
-
+ 
 using namespace std;
-int count=0;
-void funkciya(int diski, int start, int finish, int midle)   
-{                                                        
-        if (diski!=0)
-        {
-                funkciya(diski-1, start, sred, finish);
-                cout << start << " -> " << sred << endl;
-                funkciya(diski-1, sred, finish, start);
+ 
+void funk(int disk, int from, int to, int buf) {                                                         
+        if (disk != 0) {
+                funk(disk-1, from, buf, to);
+ 
+                cout << from << " -> " << to << endl;
+ 
+                funk(disk-1, buf, to, from);
         }
-
 }
-
-int main()
-{
-        int start=1, finish=3, sred=2, diski;
-        cout << "Vvedite diski:" << endl;
-        cin  >> diski;
-        funkciya(diski, start, finish, sred);
-
-        cout << count;
-        return 0;
+ 
+int main() {
+        
+        int start=1, finish=3, midl=2, diski;
+        
+        diski=3;
+ 
+        funk(diski, start, finish, midl);
+  return 0;
 }
