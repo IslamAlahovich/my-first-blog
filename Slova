@@ -2,11 +2,13 @@
 #include <string>
 #include <vector>
 #include <set>
-char xep[20];
-int xyu=0;
+
+char slova[20];
+int count=0;
+
 using namespace std;
  
-void Generate(const string &s, const size_t N, const size_t k = 0)
+void Generate(const string s, const int N, const int k = 0)
 {
     static vector<int> X(N);
     if (k == N)
@@ -14,20 +16,20 @@ void Generate(const string &s, const size_t N, const size_t k = 0)
         set<int> ss(X.begin(), X.end());
         if (ss.size() == N)
         {
-            for (size_t i = 0; i < N; i++){
-                xep[xyu]=s[X[i]];
+            for (int i = 0; i < N; i++){
+                slova[count]=s[X[i]];
                 cout << s[X[i]];
-                xyu++;
+                count++;
             }
             cout << endl;
         }
     }
     else
     {
-        for (size_t j = 0; j < s.length(); j++)
+        for (int j = 0; j < s.length(); j++)
         {
             X[k] = j;
-            Generate(s, N, k + 1);
+            Generate(s, N, k+1);
         }
     }
 }
