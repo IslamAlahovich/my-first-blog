@@ -11,12 +11,12 @@ using namespace std;
 void Generate(const string s, const int N, const int k = 0)
 {
     static vector<int> X(N);
-    if (k == N)
+    if (k==N)
     {
         set<int> ss(X.begin(), X.end());
         if (ss.size() == N)
         {
-            for (int i = 0; i < N; i++){
+            for (int i=0; i<N; i++){
                 slova[count]=s[X[i]];
                 cout << s[X[i]];
                 count++;
@@ -26,7 +26,7 @@ void Generate(const string s, const int N, const int k = 0)
     }
     else
     {
-        for (int j = 0; j < s.length(); j++)
+        for (int j=0; j<s.length(); j++)
         {
             X[k] = j;
             Generate(s, N, k+1);
@@ -37,6 +37,6 @@ void Generate(const string s, const int N, const int k = 0)
 int main()
 {
     
-    Generate("ab", 2);
+    Generate("ab", 1);
     
 }
