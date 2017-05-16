@@ -1,0 +1,17 @@
+import itertools
+
+def cross(x1, y1, x2, y2, x3, y3, x4, y4):
+    dx1=x2-x1
+    dy1=y2-y1
+    dx2=x4-x3
+    dy2=y4-y3
+    x=(dy1*dx2)-(dy2*dx1)
+    
+    if (x==0)or(dx2==0):
+        return False
+    y=(x3*y4)-(y3*x4)
+    x=((((x1*y2)-(y1*x2))*dx2)-(y*dx1))/x
+    y=((dy2*x)-y)/dx2
+    return ((x1<=x and x2>=x) or (x2<=x and x1>=x)) and ((x3<=x and x4>=x) or (x4<=x and x3>=x))
+
+def P()
