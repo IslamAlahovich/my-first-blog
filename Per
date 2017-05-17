@@ -19,4 +19,19 @@ def cross(a, b, c, d):
 def P(a,b):
     return sqrt((b[0]-a[0])**2+(b[1]-a[1])**2)
 
-B
+a=False
+A=[[0,0],[1,3],[1,4],[2,3]]
+B=list(itertools.permutations(A))
+for ff in B:
+    ss=list(ff)
+    ss.append(ss[0])
+    for i in ss:    
+        for j in range(0,len(i),2):
+            for m in range(1,len(i),2):
+                for k in range(2,len(i),2):
+                    if(j+k<=len(i)and m+k<=len(i)):
+                        a+=cross(i[j],i[m],i[j+k],i[m+k])
+    if a==True:
+        del B[ff]
+                    
+print(B)                    
