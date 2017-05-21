@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-int N=4; int X[N][2]={{0,0}, {0,1}, {1,0}, {1,1}}
+int N=4; int X[N][2]={{0,0}, {0,1}, {1,0}, {1,1}}; int MAX=0;
 
 bool cross(){}
 
@@ -10,12 +10,16 @@ void Backtracking(int k){
     static int A[N+1][2];
     if(k==0) A[0]=X[0]; A[N]=X[0];
     if (k==N){
+        int a=0;
         for(int i=0;i<N;i+=2){
             for(int j=1;j<N;j+=2){
                 for(int k=2;k<N;k+=2){
-                    if((cross(A[i],A[j],A[i+k],A[j+k])))
+                    if((cross(A[i],A[j],A[i+k],A[j+k]))): a+=1;
                   }
               }
+          }
+        if(a==0){
+            if(MAX<Per(A)) MAX=Per(A);
           }
       }
     else{
@@ -26,4 +30,9 @@ void Backtracking(int k){
     }
     
     
+}
+
+int main(){
+  Backtracking(0);
+  return 0;  
 }
