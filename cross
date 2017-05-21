@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+bool cross(a,b,c,d){
+   float dx1=b[0]-a[0];
+   float dy1=b[1]-a[1];
+   float dx2=d[0]-c[0];
+   float dy2=d[1]-c[1];
+   
+   float a1=-dy1;
+   float b1=+dx1;
+   float d1=-(a1*a[0]+b1*a[1]);
+   
+   float a2=-dy2;
+   float b2=+dx2;
+   float d2=-(a2*c[0]+b2*c[1]);
+   
+   float seg1_st=a2*a[0]+b2*a[1]+d2;
+   float seg1_end=a2*b[0]+b2*b[1]+d2;
+   float seg2_st=a1*c[0]+b1*c[1]+d1;
+   float seg2_end=a1*d[0]+b1*[1]+d1;
+   if(seg1_st*seg1_end>=0 || seg2_st*seg2_end>=0) return false;
+   return true;
+}
+
+int main(){
+  
+}
