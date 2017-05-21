@@ -16,22 +16,25 @@ bool twins(int A[N+1][2]){
 }
 
 bool cross(int a[2],int b[2],int c[2],int d[2]){
-      int x1=a[0], y1=a[1], x2=b[0], y2=b[1], x3=c[0], y3=c[1], x4=d[0], y4=d[1];
-      int dx1=x2-x1;
-      int dy1=y2-y1;
-      int dx2=x4-x3;
-      int dy2=y4-y3;
-      int x=(dy1*dx2)-(dy2*dx1);
-
-      if((x==0)or(dx2==0)){
-          return false;
-      }
-      int y=(x3*y4)-(y3*x4);
-      x=((((x1*y2)-(y1*x2))*dx2)-(y*dx1))/x;
-      y=((dy2*x)-y)/dx2;
-
-      return (((x1<=x and x2>=x) or (x2<=x and x1>=x)) and ((x3<=x and x4>=x) or (x4<=x and x3>=x)));
-
+   float dx1=b[0]-a[0];
+   float dy1=b[1]-a[1];
+   float dx2=d[0]-c[0];
+   float dy2=d[1]-c[1];
+   
+   float a1=-dy1;
+   float b1=+dx1;
+   float d1=-(a1*a[0]+b1*a[1]);
+   
+   float a2=-dy2;
+   float b2=+dx2;
+   float d2=-(a2*c[0]+b2*c[1]);
+   
+   float seg1_st=a2*a[0]+b2*a[1]+d2;
+   float seg1_end=a2*b[0]+b2*b[1]+d2;
+   float seg2_st=a1*c[0]+b1*c[1]+d1;
+   float seg2_end=a1*d[0]+b1*d[1]+d1;
+   if(seg1_st*seg1_end>=0 || seg2_st*seg2_end>=0) return false;
+   return true;
 }
 
 double Per(int A[N+1][2]){
