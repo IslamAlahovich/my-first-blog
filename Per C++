@@ -44,7 +44,7 @@ void Backtracking(int k){
             			cout << A[i][j];
         cout << endl;
         int a=0;
-        for(int i=0,j=1;i<N+1;j<N+1;i+=2;j+=2){
+        for (int i=0, j=1;(i<N+1 && j<N+1);i+=2, j+=2){
                 for(int k=2;k<N+1;k+=2){
                     if((cross(A[i],A[j],A[i+k],A[j+k]))==1) a+=1;
                   }
