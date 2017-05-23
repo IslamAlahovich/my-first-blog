@@ -1,21 +1,22 @@
 #include <iostream>
 #include <math.h>
+#include <algorithm>
 using namespace std;
 
-const int N=5; int X[N][2]={{3,3}, {1,2}, {0,0}, {0,3},{3,0}}; double MAX=0;
+const int N=4; int X[N][2]={{1,1}, {1,0}, {0,0}, {0,1}}; double MAX=0; //N-колво точек на плоскости; Х[N]-точки; MAX-максимальный периметр
 
-bool twins(int A[N+1][2]){
+bool twins(int A[N+1][2]){ //чтобы убрать перестановки с одинаковыми элементами
   int U=0;
   for(int i=0;i<N+1;i++){
     for(int k=1;(k+i<N+1);k++){
-        if((A[i][0]==A[i+k][0])and(A[i][1]==A[i+k][1])) U+=1;
+        if((A[i][0]==A[i+k][0])&&(A[i][1]==A[i+k][1])) U+=1;
     }
   }
-  if(U>1) return true;
+  if(U>1) return true;//потому что первый и последний элемент я сделал одинаковыми
   else return false;
 }
 
-bool cross(int a[2],int b[2],int c[2],int d[2]){
+bool cross(int a[2],int b[2],int c[2],int d[2]){ //пересечения
    float dx1=b[0]-a[0];
    float dy1=b[1]-a[1];
    float dx2=d[0]-c[0];
@@ -46,7 +47,7 @@ bool cross(int a[2],int b[2],int c[2],int d[2]){
    return true;
 }
 
-double Per(int A[N+1][2]){
+double Per(int A[N+1][2]){ //периметр
   double P=0;
   for(int i=0;i<N;i++)
     P+=sqrt(pow((A[i+1][0]-A[i][0]),2)+pow((A[i+1][1]-A[i][1]),2));
